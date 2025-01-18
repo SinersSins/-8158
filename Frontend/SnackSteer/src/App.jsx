@@ -9,6 +9,7 @@ import { Navigate } from "react-router-dom";
 import FoodPage from "./components/FoodPage/Foodpage";
 import UserDetailForm from "./components/CreateProfile/UserDetailForm";
 import TrafficReliefDashboard from "./components/TrafficReliefDashboard/TrafficReliefDashboard";
+import TransportPage from "./pages/TransportPage";
 function App() {
   return (
     <Router>
@@ -21,6 +22,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/user" element={<UserDetailForm/>} />
         <Route path="/foodpage" element={<FoodPage/>} />
+        <Route path="/transport" element= {<TransportPage/>} />
         {/* <Route path="/home" element={<Home />} /> */}
 
         {/* Add other routes here */}
