@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/EmergencySupport.css'; // Ensure to link the CSS
+///import '../styles/EmergencySupport.css'; // Ensure to link the CSS
 
 function EmergencySupport() {
   return (
