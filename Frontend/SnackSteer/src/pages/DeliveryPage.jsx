@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { GoogleMap, LoadScript, DirectionsRenderer, Marker, InfoWindow } from "@react-google-maps/api";
 import axios from "axios";
 import '../styles/DeliveryPage.css'; // Import the CSS file
-
+import { Link } from "react-router";
 const GOOGLE_MAPS_API_KEY = "AIzaSyAJ8MSlTWNHYOvTpuMB-v3NT8q7mr2jhyg"; // Replace with your own API key
 
 const DeliveryPage = () => {
@@ -93,7 +93,13 @@ const DeliveryPage = () => {
   };
 
   return (
-   
+    <>
+    <nav className="navbar">
+    <ul>
+      <li><Link to="/dashboard">Dashboard</Link></li>
+      <li><Link to="/emergency-support">Emergency Support</Link></li>
+    </ul>
+  </nav>
       <div className="container">
         <h1>Traffic Relief Dashboard</h1>
     
@@ -105,7 +111,7 @@ const DeliveryPage = () => {
             value={destination}
             onChange={(e) => setDestination(e.target.value)}
             className="input"
-          />
+            />
           <button onClick={getDirections} className="btn green-btn">Get Directions</button>
         </div>
     
@@ -121,15 +127,15 @@ const DeliveryPage = () => {
                 {directions && <DirectionsRenderer directions={directions} />}
                 {restaurants.map((restaurant) => (
                   <Marker
-                    key={restaurant.place_id}
-                    position={restaurant.geometry.location}
-                    onClick={() => setSelectedRestaurant(restaurant)}
+                  key={restaurant.place_id}
+                  position={restaurant.geometry.location}
+                  onClick={() => setSelectedRestaurant(restaurant)}
                   />
                 ))}
                 {selectedRestaurant && (
                   <InfoWindow
-                    position={selectedRestaurant.geometry.location}
-                    onCloseClick={() => setSelectedRestaurant(null)}
+                  position={selectedRestaurant.geometry.location}
+                  onCloseClick={() => setSelectedRestaurant(null)}
                   >
                     <div>
                       <h3>{selectedRestaurant.name}</h3>
@@ -137,7 +143,7 @@ const DeliveryPage = () => {
                       <button
                         onClick={() => postRestaurantDetails(selectedRestaurant)}
                         className="send-btn"
-                      >
+                        >
                         Send to Backend
                       </button>
                     </div>
@@ -161,6 +167,7 @@ const DeliveryPage = () => {
           </div>
         </div>
       </div>
+              </>
     );
     
   

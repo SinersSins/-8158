@@ -7,7 +7,7 @@ function EmergencySupport() {
     <div className="emergency-support-container">
       <nav className="navbar">
         <ul>
-          <li><Link to="/">Dashboard</Link></li>
+          <li><Link to="/dashboard">Dashboard</Link></li>
           <li><Link to="/emergency-support">Emergency Support</Link></li>
         </ul>
       </nav>
@@ -37,7 +37,7 @@ function EmergencySupport() {
           <button className="request-button">Request Vehicle Assistance</button>
         </section>
         
-        <Link to="/" className="back-to-dashboard">Back to Dashboard</Link>
+        <Link to="/dashboard" className="back-to-dashboard">Back to Dashboard</Link>
       </div>
     </div>
   );

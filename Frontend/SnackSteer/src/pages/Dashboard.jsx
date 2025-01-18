@@ -8,7 +8,7 @@ function Dashboard() {
       {/* Navbar */}
       <nav className="navbar">
         <ul>
-          <li><Link to="/">Dashboard</Link></li>
+          <li><Link to="/dashboard">Dashboard</Link></li>
           <li><Link to="/emergency-support">Emergency Support</Link></li> {/* New Link */}
         </ul>
       </nav>
