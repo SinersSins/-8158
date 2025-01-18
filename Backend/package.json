@@ -1,5 +1,5 @@
 {
-  "name": "back-end",
+  "name": "y",
   "version": "1.0.0",
   "main": "index.js",
   "type": "module",
@@ -16,5 +16,6 @@
     "mongoose": "^8.9.5",
     "nodemon": "^3.1.9"
   },
+  "devDependencies": {},
   "description": ""
 }

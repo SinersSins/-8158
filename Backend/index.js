@@ -6,9 +6,11 @@ import cors from "cors";
 const app = express();
 const PORT = 3000;
 import userProfilerouter from "./routes/userProfile.route.js";
+import userRouter from "./routes/authRoutes.js";
 app.use(cors());
 app.use(express.json());
 app.use("/userProfile", userProfilerouter);
+app.use('/auth', userRouter);
 app.listen(PORT, async () => {
   try {
     await mongoose.connect("mongodb://127.0.0.1:27017/snackandsteer");
