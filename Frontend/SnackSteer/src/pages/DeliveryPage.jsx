@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { GoogleMap, LoadScript, DirectionsRenderer, Marker, InfoWindow } from "@react-google-maps/api";
 import axios from "axios";
-import '../styles/DeliveryPage.css'; // Import the CSS file
-import { Link } from "react-router";
+import '../styles/DeliveryPage.css'; // Import the updated CSS file
+import { Link } from "react-router-dom";
+
 const GOOGLE_MAPS_API_KEY = "AIzaSyAJ8MSlTWNHYOvTpuMB-v3NT8q7mr2jhyg"; // Replace with your own API key
 
 const DeliveryPage = () => {
@@ -11,6 +12,8 @@ const DeliveryPage = () => {
   const [directions, setDirections] = useState(null);
   const [restaurants, setRestaurants] = useState([]);
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
+  const [vehiclePosition, setVehiclePosition] = useState(null); // Real-time vehicle position
+  const [manualLocation, setManualLocation] = useState(""); // New state for manual location
 
   const getCurrentLocation = () => {
     if (navigator.geolocation) {
@@ -92,29 +95,73 @@ const DeliveryPage = () => {
     }
   };
 
+  const handleManualLocationChange = (e) => {
+    setManualLocation(e.target.value);
+  };
+
+  const setManualOrigin = () => {
+    if (!manualLocation) {
+      alert("Please enter a valid location.");
+      return;
+    }
+
+    const geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ address: manualLocation }, (results, status) => {
+      if (status === "OK") {
+        setOrigin(results[0].geometry.location);
+      } else {
+        alert("Geocode was not successful for the following reason: " + status);
+      }
+    });
+  };
+
+  useEffect(() => {
+    const socket = new WebSocket("YOUR_WEBSOCKET_URL"); // WebSocket URL for vehicle position
+
+    socket.onmessage = (event) => {
+      const vehicleData = JSON.parse(event.data);
+      setVehiclePosition({ lat: vehicleData.lat, lng: vehicleData.lng });
+    };
+
+    return () => {
+      socket.close();
+    };
+  }, []);
+
   return (
     <>
-    <nav className="navbar">
-    <ul>
-      <li><Link to="/dashboard">Dashboard</Link></li>
-      <li><Link to="/emergency-support">Emergency Support</Link></li>
-    </ul>
-  </nav>
+      <nav className="navbar">
+        <ul>
+          <li><Link to="/dashboard">Dashboard</Link></li>
+          <li><Link to="/emergency-support">Emergency Support</Link></li>
+        </ul>
+      </nav>
       <div className="container">
         <h1>Traffic Relief Dashboard</h1>
-    
+
         <div className="input-container">
           <button onClick={getCurrentLocation} className="btn">Get Current Location</button>
+
+          {/* Manual location input */}
+          <input
+            type="text"
+            placeholder="Enter a location manually"
+            value={manualLocation}
+            onChange={handleManualLocationChange}
+            className="input"
+          />
+          <button onClick={setManualOrigin} className="btn yellow-btn">Set Manual Location</button>
+
           <input
             type="text"
             placeholder="Enter destination"
             value={destination}
             onChange={(e) => setDestination(e.target.value)}
             className="input"
-            />
+          />
           <button onClick={getDirections} className="btn green-btn">Get Directions</button>
         </div>
-    
+
         <div className="main-content">
           <div className="map-container">
             <LoadScript googleMapsApiKey={GOOGLE_MAPS_API_KEY} libraries={["places"]}>
@@ -125,17 +172,18 @@ const DeliveryPage = () => {
               >
                 {origin && <Marker position={origin} label="You" />}
                 {directions && <DirectionsRenderer directions={directions} />}
+                {vehiclePosition && <Marker position={vehiclePosition} label="Vehicle" />}
                 {restaurants.map((restaurant) => (
                   <Marker
-                  key={restaurant.place_id}
-                  position={restaurant.geometry.location}
-                  onClick={() => setSelectedRestaurant(restaurant)}
+                    key={restaurant.place_id}
+                    position={restaurant.geometry.location}
+                    onClick={() => setSelectedRestaurant(restaurant)}
                   />
                 ))}
                 {selectedRestaurant && (
                   <InfoWindow
-                  position={selectedRestaurant.geometry.location}
-                  onCloseClick={() => setSelectedRestaurant(null)}
+                    position={selectedRestaurant.geometry.location}
+                    onCloseClick={() => setSelectedRestaurant(null)}
                   >
                     <div>
                       <h3>{selectedRestaurant.name}</h3>
@@ -143,7 +191,7 @@ const DeliveryPage = () => {
                       <button
                         onClick={() => postRestaurantDetails(selectedRestaurant)}
                         className="send-btn"
-                        >
+                      >
                         Send to Backend
                       </button>
                     </div>
@@ -152,8 +200,8 @@ const DeliveryPage = () => {
               </GoogleMap>
             </LoadScript>
           </div>
-    
-          <div className="restaurants-list" style={{}}>
+
+          <div className="restaurants-list">
             <h4>Restaurants Along the Route</h4>
             <ul>
               {restaurants.slice(0, 10).map((restaurant) => (
@@ -167,10 +215,8 @@ const DeliveryPage = () => {
           </div>
         </div>
       </div>
-              </>
-    );
-    
-  
+    </>
+  );
 };
 
 export default DeliveryPage;

@@ -1,83 +1,204 @@
-/* Main container for the page */
-.container {
-  padding: 20px;
-  font-family: Arial, sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Header styling */
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Navbar Styling */
+.navbar {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+}
+
+.navbar ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+}
+
+.navbar ul li {
+  margin: 0 15px;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.navbar a:hover {
+  text-decoration: underline;
+}
+
+/* Main Container */
+.container {
+  padding: 20px;
+}
+
 h1 {
+  text-align: center;
   font-size: 24px;
   margin-bottom: 20px;
 }
 
-/* Input and button container */
+/* Input Section */
 .input-container {
-  margin-bottom: 20px;
   display: flex;
+  flex-direction: column;
   align-items: center;
+  margin-bottom: 20px;
 }
 
-.input {
-  margin-left: 10px;
+.input-container input {
+  width: 100%;
+  max-width: 400px;
   padding: 10px;
-  width: 300px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
 }
 
-.btn, .green-btn {
-  padding: 10px;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.green-btn {
-  background-color: #4CAF50;
+.input-container button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
   color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-/* Flex container for map and restaurants list */
+.input-container button:hover {
+  background-color: #0056b3;
+}
+
+.input-container .yellow-btn {
+  background-color: #ffcc00;
+}
+
+.input-container .yellow-btn:hover {
+  background-color: #e6b800;
+}
+
+.input-container .green-btn {
+  background-color: #28a745;
+}
+
+.input-container .green-btn:hover {
+  background-color: #218838;
+}
+
+/* Main Content */
 .main-content {
   display: flex;
   justify-content: space-between;
-  width: 100%;
-  gap: 20px; /* Adds spacing between map and list */
+  flex-wrap: wrap; /* Ensure the content wraps on smaller screens */
+  gap: 20px;
 }
 
-/* Map container styling */
 .map-container {
   width: 60%; /* Map takes 60% of the width */
-  height: 500px; /* Adjust height as needed */
-  flex-shrink: 0;
+  height: 400px;
+  margin-bottom: 20px;
 }
 
-/* Restaurants list styling */
 .restaurants-list {
   width: 35%; /* List takes 35% of the width */
-  max-height: 500px; /* Match the map height */
-  overflow-y: auto; /* Scrollable if content overflows */
+  max-height: 500px;
+  overflow-y: auto;
   border: 1px solid #ddd;
   padding: 10px;
   background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
+.restaurants-list ul {
+  list-style: none;
 }
 
-li {
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
+.restaurants-list ul li {
+  margin: 10px 0;
 }
 
-/* Button for sending restaurant details */
+.restaurants-list ul li strong {
+  font-size: 16px;
+}
+
+/* Send button */
 .send-btn {
-  margin-top: 10px;
-  background-color: #4CAF50;
+  background-color: #28a745;
   color: white;
-  padding: 5px 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
+  width: 100%;
+}
+
+.send-btn:hover {
+  background-color: #218838;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+  .input-container {
+    width: 90%;
+    padding: 10px;
+  }
+
+  .input-container input,
+  .input-container button {
+    width: 100%;
+    max-width: none;
+  }
+
+  .restaurants-list {
+    width: 100%;
+    padding: 15px;
+    margin-top: 10px;
+  }
+
+  .restaurants-list ul li {
+    font-size: 14px;
+  }
+
+  .map-container {
+    width: 100%; /* Make map take full width on tablets */
+    height: 300px; /* Adjust map height */
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 20px;
+  }
+
+  .input-container {
+    width: 100%;
+    padding: 5px;
+  }
+
+  .input-container button {
+    padding: 12px 10px;
+  }
+
+  .send-btn {
+    padding: 12px;
+  }
+
+  .map-container {
+    height: 250px;
+  }
+
+  .restaurants-list {
+    width: 100%;
+    padding: 10px;
+  }
 }
