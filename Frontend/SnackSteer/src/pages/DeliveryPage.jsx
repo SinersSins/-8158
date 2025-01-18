@@ -3,6 +3,7 @@ import { GoogleMap, LoadScript, DirectionsRenderer, Marker, InfoWindow } from "@
 import axios from "axios";
 import '../styles/DeliveryPage.css'; // Import the updated CSS file
 import { Link } from "react-router-dom";
+import Footer from "./Footer";
 
 const GOOGLE_MAPS_API_KEY = "AIzaSyAJ8MSlTWNHYOvTpuMB-v3NT8q7mr2jhyg"; // Replace with your own API key
 
@@ -14,6 +15,7 @@ const DeliveryPage = () => {
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
   const [vehiclePosition, setVehiclePosition] = useState(null); // Real-time vehicle position
   const [manualLocation, setManualLocation] = useState(""); // New state for manual location
+  const [isManual, setIsManual] = useState(false); // Track if manual location is selected
 
   const getCurrentLocation = () => {
     if (navigator.geolocation) {
@@ -132,25 +134,36 @@ const DeliveryPage = () => {
     <>
       <nav className="navbar">
         <ul>
-          <li><Link to="/dashboard">Dashboard</Link></li>
-          <li><Link to="/emergency-support">Emergency Support</Link></li>
+          <li><Link to="/dashboard">🏠 Dashboard</Link></li>
+          <li><Link to="/emergency-support">🚑 Emergency Support</Link></li>
         </ul>
       </nav>
       <div className="container">
-        <h1>Traffic Relief Dashboard</h1>
+        <h1>Traffic Relief Dashboard 🚗</h1>
 
         <div className="input-container">
-          <button onClick={getCurrentLocation} className="btn">Get Current Location</button>
+          <button onClick={getCurrentLocation} className="btn">📍 Get Current Location</button>
 
-          {/* Manual location input */}
-          <input
-            type="text"
-            placeholder="Enter a location manually"
-            value={manualLocation}
-            onChange={handleManualLocationChange}
-            className="input"
-          />
-          <button onClick={setManualOrigin} className="btn yellow-btn">Set Manual Location</button>
+          {/* Show the manual location input only when isManual is false */}
+          {!isManual && (
+            <button onClick={() => setIsManual(true)} className="green-btn">
+              🛠️ Set Location Manually
+            </button>
+          )}
+
+          {/* Manual location input - visible when isManual is true */}
+          {isManual && (
+            <>
+              <input
+                type="text"
+                placeholder="Enter your location"
+                value={manualLocation}
+                onChange={handleManualLocationChange}
+                className="input"
+              />
+              <button onClick={setManualOrigin} className="yellow-btn">🔄 Set Manual Location</button>
+            </>
+          )}
 
           <input
             type="text"
@@ -159,7 +172,7 @@ const DeliveryPage = () => {
             onChange={(e) => setDestination(e.target.value)}
             className="input"
           />
-          <button onClick={getDirections} className="btn green-btn">Get Directions</button>
+          <button onClick={getDirections} className="green-btn">🛣️ Get Directions</button>
         </div>
 
         <div className="main-content">
@@ -172,7 +185,7 @@ const DeliveryPage = () => {
               >
                 {origin && <Marker position={origin} label="You" />}
                 {directions && <DirectionsRenderer directions={directions} />}
-                {vehiclePosition && <Marker position={vehiclePosition} label="Vehicle" />}
+                {vehiclePosition && <Marker position={vehiclePosition} label="🚚 Vehicle" />}
                 {restaurants.map((restaurant) => (
                   <Marker
                     key={restaurant.place_id}
@@ -192,7 +205,7 @@ const DeliveryPage = () => {
                         onClick={() => postRestaurantDetails(selectedRestaurant)}
                         className="send-btn"
                       >
-                        Send to Backend
+                        📤 Send to Backend
                       </button>
                     </div>
                   </InfoWindow>
@@ -202,7 +215,7 @@ const DeliveryPage = () => {
           </div>
 
           <div className="restaurants-list">
-            <h4>Restaurants Along the Route</h4>
+            <h4>🍽️ Restaurants Along the Route</h4>
             <ul>
               {restaurants.slice(0, 10).map((restaurant) => (
                 <li key={restaurant.place_id}>
@@ -215,6 +228,7 @@ const DeliveryPage = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 };
