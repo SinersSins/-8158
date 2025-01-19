@@ -4,9 +4,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon backend/index.js",
+    "dev": "nodemon Backend/index.js",
     "build": "npm install && cd Frontend/SnackSteer && npm install && npm run build",
-    "start": "node backend/index.js"
+    "start": "node Backend/index.js"
   },
   "keywords": [],
   "author": "",
