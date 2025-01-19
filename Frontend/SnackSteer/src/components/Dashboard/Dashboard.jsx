@@ -1,29 +1,57 @@
-import React from "react";
+/** @format */
+
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "./Dashboard.css"; // Ensure to link the CSS
+import "./Dashboard.css";
 import Navbar from "../Navbar/Navbar.jsx";
 import Map from "../Map/Map.jsx";
 import TrafficReliefDashboard from "../TrafficReliefDashboard/TrafficReliefDashboard.jsx";
-
 import TestingFooter from "../../pages/testingFooter.jsx";
+import axios from "axios";
+
 function Dashboard() {
+  const [userData, setUserData] = useState(null); // State to store user data
+
+  useEffect(() => {
+    async function fetchUserData() {
+      try {
+        const response = await axios.get("http://localhost:3000/userProfile/");
+        if (response.data.length > 0) {
+          setUserData(response.data[0]); // Assuming the first user for simplicity
+        }
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    }
+    fetchUserData();
+  }, []);
+
   return (
     <>
       <Navbar />
       <div className="dashboard-container">
-        {/* Dashboard Content */}
         <div className="dashboard-content">
           <div className="left">
             {/* User Information Section */}
             <div className="section user-info">
               <h2>User Information</h2>
-              <p>Name: John Doe</p>
-              <p>Email: john.doe@example.com</p>
+              {userData ? (
+                <>
+                  <p>Name: {userData.name}</p>
+                  <p>City: {userData.city}</p>
+                  <p>contact: {userData.emergencyContact}</p>
+                  {/* Add additional fields as needed */}
+                </>
+              ) : (
+                <p>Loading user data...</p>
+              )}
             </div>
 
             <div className="food-order">
               <h2>Navigation and Food</h2>
-              <Link to={"/map"} id="link">Hungry.? Let's Order</Link>
+              <Link to="/map" id="link">
+                Hungry? Let's Order
+              </Link>
             </div>
 
             {/* Online Games Section */}
@@ -69,9 +97,8 @@ function Dashboard() {
           </div>
         </div>
       </div>
-  <TrafficReliefDashboard />
-     
- <TestingFooter/>
+      <TrafficReliefDashboard />
+      <TestingFooter />
     </>
   );
 }
