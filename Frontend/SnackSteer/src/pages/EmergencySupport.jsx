@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/EmergencySupport.css'; // Ensure to link the CSS
 import Navbar from '../components/Navbar/Navbar';
-import TestingFooter from './testingFooter';
+import TestingFooter from './TestingFooter';
 
 function EmergencySupport() {
   return (
