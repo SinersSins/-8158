@@ -1,6 +1,6 @@
 
 # Snack & Steer 
-
+**Website**: [snack-steer.onrender.com](https://snack-steer.onrender.com)
 The Snack and Steer Dashboard is an innovative platform designed to alleviate the frustrations of being stuck in traffic by offering a range of real-time solutions. This dashboard aims to enhance user convenience and productivity by integrating various features, such as real-time delivery, transportation.
 
 
@@ -143,6 +143,7 @@ git clone link ################### cd SnackSteer
 - Install dependencies:
  npm install
 - Start the application:
+- npm run build
  npm run dev
 
 ## Usage
@@ -151,10 +152,7 @@ git clone link ################### cd SnackSteer
 - Create an account or log in to start using the snap & steer.
 - Set up your snap & steer and view dashboards.
 
-## Screenshots
-## API Endpoints
--
- - 
+
  
 ## Technology Stack
 - Frontend : HTML,CSS and React.js for designing the user interface.
@@ -167,3 +165,4 @@ git clone link ################### cd SnackSteer
 - mongoose : for mongoDB connection, storing data
 - CORS : Origin Resourse Sharing - For allowing other domains to access our API
 - dotenv : For storing confidential data
+-recharts: For charts
