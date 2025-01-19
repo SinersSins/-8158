@@ -1,18 +1,21 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import { UserRound, Mail, Phone, Lock } from 'lucide-react';
-import '../styles/Register.css'; // Import the separate CSS file
+/** @format */
+
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { UserRound, Mail, Phone, Lock } from "lucide-react";
+import "../styles/Register.css"; // Import the separate CSS file
 
 const Register = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    password: '',
-    confirmPassword: '',
+    name: "",
+    email: "",
+    phone: "",
+    password: "",
+    confirmPassword: "",
   });
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
+  const [username, setUsername] = useState("");
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -22,22 +25,39 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (formData.password !== formData.confirmPassword) {
-      setError('Passwords do not match');
+      setError("Passwords do not match");
       return;
     }
 
     try {
-      await axios.post('http://localhost:3000/auth/register', {
+      const response = await axios.post("http://localhost:3000/auth/register", {
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
         password: formData.password,
       });
-      navigate('/login');
+
+      const userProfile = {
+        name: formData.name,
+        email: formData.email,
+      };
+
+      // Save user profile data to localStorage
+      localStorage.setItem("userProfile", JSON.stringify(userProfile));
+      setUsername(userProfile.name); // Set the username state
+
+      navigate("/login"); // Navigate to login after registration
     } catch (err) {
-      setError(err.response?.data?.message || 'Registration failed');
+      setError(err.response?.data?.message || "Registration failed");
     }
   };
+
+  useEffect(() => {
+    const storedProfile = JSON.parse(localStorage.getItem("userProfile"));
+    if (storedProfile && storedProfile.name) {
+      setUsername(storedProfile.name); // Load the username from localStorage
+    }
+  }, []);
 
   return (
     <div className="register-container">
@@ -105,11 +125,12 @@ const Register = () => {
           </button>
         </form>
         <p className="register-footer">
-          Already have an account?{' '}
+          Already have an account?{" "}
           <Link to="/login" className="register-link">
             Login here
           </Link>
         </p>
+        {username && <p>Welcome, {username}!</p>}
       </div>
     </div>
   );

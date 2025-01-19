@@ -6,24 +6,16 @@ import "./Dashboard.css";
 import Navbar from "../Navbar/Navbar.jsx";
 import Map from "../Map/Map.jsx";
 import TrafficReliefDashboard from "../TrafficReliefDashboard/TrafficReliefDashboard.jsx";
-import TestingFooter from "../../pages/testingFooter.jsx";
-import axios from "axios";
 
 function Dashboard() {
   const [userData, setUserData] = useState(null); // State to store user data
 
   useEffect(() => {
-    async function fetchUserData() {
-      try {
-        const response = await axios.get("http://localhost:3000/userProfile/");
-        if (response.data.length > 0) {
-          setUserData(response.data[0]); // Assuming the first user for simplicity
-        }
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-      }
+    // Retrieve user data from localStorage
+    const storedProfile = JSON.parse(localStorage.getItem("userProfile"));
+    if (storedProfile) {
+      setUserData(storedProfile);
     }
-    fetchUserData();
   }, []);
 
   return (
@@ -37,10 +29,8 @@ function Dashboard() {
               <h2>User Information</h2>
               {userData ? (
                 <>
-                  <p>Name: {userData.name}</p>
-                  <p>City: {userData.city}</p>
-                  <p>contact: {userData.emergencyContact}</p>
-                  {/* Add additional fields as needed */}
+                  <p>Welcome, {userData.name}!</p>
+                  {/* Additional fields can be displayed as needed */}
                 </>
               ) : (
                 <p>Loading user data...</p>
