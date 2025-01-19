@@ -31,8 +31,7 @@ The Snack and Steer Dashboard is an innovative platform designed to alleviate th
  - Full Stack
 ## Deployed App
 
-- Frontend : //link
-- Backend :  //link
+--LINK--- https://snack-steer.onrender.com
 ## Directory Structure
 
 main
@@ -47,9 +46,7 @@ main
 │   │   ├── authRoutes.js
 │   │   └── userProfile.route.js
 │   ├── index.js
-│   ├── .gitignore
-│   ├── package.json
-│   └── package-lock.json
+│   
 │   
 ├── Frontend
 │   ├── SnackSteer
@@ -94,10 +91,13 @@ main
 │   │   ├── README.md
 │   │   └── yarn.lock
 └── README.md
+├── .gitignore
+├── package.json
+├── package-lock.json
 
 ## Video Walkthroughs
 
-- Project Overview:
+- https://drive.google.com/drive/folders/1lLk5f_1kVuBvicm0wL8SRjtHBC_eguSf?usp=sharing
 
 - 
 ## Design Decisions
@@ -110,7 +110,7 @@ main
 
 #### Database Choice:
 
-- A database is utilized to store user data, device settings, and routines. The specific type NoSql which handled by MongoDB, we have used it.
+A database stores user data, device settings, and routines. We have used the specific type of NoSql, which is handled by MongoDB.
 
 #### Modular Design:
 
