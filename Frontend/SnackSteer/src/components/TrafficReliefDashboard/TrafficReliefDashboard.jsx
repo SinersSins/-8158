@@ -92,7 +92,6 @@ const TrafficReliefDashboard = () => {
         </ResponsiveContainer>
       </div>
     </div>
-   <TestingFooter/>
   </>
   );
 };

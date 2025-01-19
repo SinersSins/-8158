@@ -98,7 +98,6 @@ function Dashboard() {
         </div>
       </div>
       <TrafficReliefDashboard />
-      <TestingFooter />
     </>
   );
 }
