@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import "./UserDetailForm.css";
 import Navbar from "../Navbar/Navbar";
-import TestingFooter from "../../pages/testingFooter";
+import TestingFooter from "../../pages/TestingFooter";
 
 const UserDetailForm = () => {
   const [userDetails, setUserDetails] = useState({

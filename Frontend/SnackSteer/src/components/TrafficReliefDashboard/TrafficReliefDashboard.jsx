@@ -14,7 +14,7 @@ import {
   Text,
 } from "recharts";
 import "./TrafficReliefDashboard.css"; // Optional, for custom styles
-import TestingFooter from "../../pages/testingFooter";
+import TestingFooter from "../../pages/TestingFooter";
 
 
 const TrafficReliefDashboard = () => {

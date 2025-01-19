@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import "./FoodPage.css";
 import Navbar from "../Navbar/Navbar";
-import TestingFooter from "../../pages/testingFooter";
+import TestingFooter from "../../pages/TestingFooter";
 
 // Sample food items with images
 const foodItems = [
