@@ -95,7 +95,6 @@ main
 │   │   └── yarn.lock
 └── README.md
 
-
 ## Video Walkthroughs
 
 - Project Overview:
