@@ -36,6 +36,7 @@
   flex-direction: column;
   gap: 20px;
   box-sizing: border-box;
+  
 }
 
 /* Right Side */
@@ -146,4 +147,12 @@
   .user-info, .food-order, .online-games, .emergency-support, .transport-option {
     padding: 15px;
   }
+}
+
+.left h2 , .right h2 {
+  color: black;
+}
+.section-transport-option div{
+  display: flex;
+  flex-direction: column;
 }

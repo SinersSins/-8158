@@ -26,14 +26,14 @@ function Dashboard() {
           <div className="left">
             {/* User Information Section */}
             <div className="section user-info">
-              <h2>User Information</h2>
+             
               {userData ? (
                 <>
-                  <p>Welcome, {userData.name}!</p>
+                  <h2>Welcome, {userData.name}!</h2>
                   {/* Additional fields can be displayed as needed */}
                 </>
               ) : (
-                <p>Loading user data...</p>
+                <h2>Loading user data...</h2>
               )}
             </div>
 
@@ -81,8 +81,14 @@ function Dashboard() {
 
             {/* Transport Option Section */}
             <div className="section transport-option">
+              <div>
               <h2>Transport Option</h2>
+
+              </div>
+              <div>
+
               <Link to="/transport">Available transport options here.</Link>
+              </div>
             </div>
           </div>
         </div>
