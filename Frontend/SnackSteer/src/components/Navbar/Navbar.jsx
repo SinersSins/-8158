@@ -2,24 +2,31 @@
 
 import React from "react";
 import styles from "./Navbar.module.css";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <>
       <div className={styles.container}>
         <div id={styles.left}>
-          <div>
-            <h1 id={styles.name}>Snack & Steer</h1>
-          </div>
+          <h1 id={styles.name}>Snack & Steer</h1>
         </div>
         <div id={styles.right}>
-          <p>Login</p>
-          <p>Signup</p>
-          <p>food</p>
-          <p>Contact</p>
-          <button className={styles.sayhellobutton}>
-            <i className={styles.fasfacomment}></i> User Profile
-          </button>
+          <Link to="/dashboard">
+            <span role="img" aria-label="dashboard">📊</span> Dashboard
+          </Link>
+          <Link to="/map">
+            <span role="img" aria-label="food">🍔</span> Food
+          </Link>
+          <Link to="/emergency-support">
+            <span role="img" aria-label="contact">📞</span> Contact
+          </Link>
+          <Link to="/user">
+            <span role="img" aria-label="user">👤</span> User Profile
+          </Link>
+          <Link to="/login">
+            <span role="img" aria-label="logout">🚪</span> Logout
+          </Link>
         </div>
       </div>
     </>

@@ -3,7 +3,7 @@ import { GoogleMap, LoadScript, DirectionsRenderer, Marker, InfoWindow } from "@
 import axios from "axios";
 import '../styles/DeliveryPage.css'; // Import the updated CSS file
 import { Link } from "react-router-dom";
-import Footer from "./Footer";
+import TestingFooter from "./testingFooter";
 
 const GOOGLE_MAPS_API_KEY = "AIzaSyAJ8MSlTWNHYOvTpuMB-v3NT8q7mr2jhyg"; // Replace with your own API key
 
@@ -228,7 +228,7 @@ const DeliveryPage = () => {
           </div>
         </div>
       </div>
-      <Footer/>
+      <TestingFooter/>
     </>
   );
 };

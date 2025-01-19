@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Dashboard from "../src/pages/Dashboard";
+import Dashboard from "./components/Dashboard/Dashboard"
 import DeliveryPage from "../src/pages/DeliveryPage";
 import EmergencySupport from "./pages/EmergencySupport";
 import Login from "./pages/Login";
@@ -9,8 +9,10 @@ import { Navigate } from "react-router-dom";
 import FoodPage from "./components/FoodPage/Foodpage";
 import UserDetailForm from "./components/CreateProfile/UserDetailForm";
 import TransportPage from "./pages/TransportPage";
+import Footer from "./pages/Footer";
 function App() {
   return (
+    <>
     <Router>
       <Routes>
         <Route path="/dashboard" element={<Dashboard />} />
@@ -27,6 +29,8 @@ function App() {
         {/* Add other routes here */}
       </Routes>
     </Router>
+   
+    </>
   );
 }
 

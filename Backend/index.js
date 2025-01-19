@@ -13,10 +13,10 @@ app.use("/userProfile", userProfilerouter);
 app.use('/auth', userRouter);
 app.listen(PORT, async () => {
   try {
-    await mongoose.connect("mongodb://127.0.0.1:27017/snackandsteer");
+    await mongoose.connect("mongodb+srv://ddhruv8824:BrSnEqkjXY5IGgUA@cluster0.n4jf8.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
     console.log("server is running");
-  } catch {
-    console.error("Error");
+  } catch (error){
+    console.error(error,"Error");
   }
 });
 
