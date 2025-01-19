@@ -30,7 +30,7 @@ const Register = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:3000/auth/register", {
+      const response = await axios.post("https://snack-steer.onrender.com/auth/register", {
         name: formData.name,
         email: formData.email,
         phone: formData.phone,

@@ -33,7 +33,7 @@ const UserDetailForm = () => {
 
     const token = localStorage.getItem("jwtToken");
 
-    fetch("http://localhost:3000/userProfile/add", {
+    fetch("https://snack-steer.onrender.com/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

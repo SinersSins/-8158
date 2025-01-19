@@ -39,7 +39,7 @@ const FoodPage = () => {
       <div className="food-grid">
         {foodItems.map((food) => (
           <div key={food.id} className="food-card">
-            <img src={food.image} alt={food.name} className="food-image" />
+            <img src={require(`./foodimg/{food.image}`)} alt={food.name} className="food-image" />
             <h4>{food.name}</h4>
             <p>Price: ₹{food.price}</p>
             <button onClick={() => addToCart(food)}>Add to Cart</button>

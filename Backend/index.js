@@ -10,8 +10,11 @@ const app = express();
 const PORT = process.env.PORT ||3000;
 
 const _dirname = path.resolve()
-
-app.use(cors());
+const corsOptions = {
+  origin : "https://snack-steer.onrender.com/",
+  credentials : true
+}
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use("/userProfile", userProfilerouter);
 app.use('/auth', userRouter);
