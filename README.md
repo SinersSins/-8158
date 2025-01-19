@@ -35,6 +35,66 @@ The Snack and Steer Dashboard is an innovative platform designed to alleviate th
 - Backend :  //link
 ## Directory Structure
 
+main
+├── Backend
+│   ├── config
+│   │   └── db.js
+│   ├── module
+│   │   ├── Usermodule.js  
+│   │   └── userProfile.module.js
+│   ├── node_modules
+│   ├── routes
+│   │   ├── authRoutes.js
+│   │   └── userProfile.route.js
+│   ├── index.js
+│   ├── .gitignore
+│   ├── package.json
+│   └── package-lock.json
+│   
+├── Frontend
+│   ├── SnackSteer
+│   │   ├── public
+│   │   ├── src
+│   │   │   ├── assets
+│   │   │   ├── components
+│   │   │   │   ├── CreateProfile
+│   │   │   │   ├── Dashboard
+│   │   │   │   ├── FoodPage
+│   │   │   │   ├── Map
+│   │   │   │   ├── Navbar
+│   │   │   │   └── TrafficReliefDashboard
+│   │   │   ├── context
+│   │   │   │   └── AuthContext.js
+│   │   │   ├── pages
+│   │   │   │   ├── DeliveryPage.jsx
+│   │   │   │   ├── EmergencySupport.jsx
+│   │   │   │   ├── Login.jsx
+│   │   │   │   ├── NewsFeed.jsx
+│   │   │   │   ├── Register.jsx
+│   │   │   │   ├── TestingFooter.jsx
+│   │   │   │   ├── TestingFooter.css
+│   │   │   │   └── TransportPage.jsx
+│   │   │   ├── services
+│   │   │   │   └── api.js
+│   │   │   ├── styles
+│   │   │   │   ├── Dashboard.css
+│   │   │   │   ├── DeliveryPage.css
+│   │   │   │   ├── EmergencySupport.css
+│   │   │   │   ├── Login.css
+│   │   │   │   ├── NewsFeed.css
+│   │   │   │   ├── Register.css
+│   │   │   │   └── TransportPage.css
+│   │   │   ├── App.jsx
+│   │   │   ├── App.css
+│   │   │   ├── main.jsx
+│   │   │   └── index.css
+│   │   ├── .gitignore
+│   │   ├── package.json
+│   │   ├── package-lock.json
+│   │   ├── README.md
+│   │   └── yarn.lock
+└── README.md
+
 
 ## Video Walkthroughs
 
