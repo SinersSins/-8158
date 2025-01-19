@@ -9,7 +9,7 @@ import { Navigate } from "react-router-dom";
 import FoodPage from "./components/FoodPage/Foodpage";
 import UserDetailForm from "./components/CreateProfile/UserDetailForm";
 import TransportPage from "./pages/TransportPage";
-import Footer from "./pages/Footer";
+
 function App() {
   return (
     <>

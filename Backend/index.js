@@ -4,7 +4,7 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT ||3000;
 import userProfilerouter from "./routes/userProfile.route.js";
 import userRouter from "./routes/authRoutes.js";
 app.use(cors());

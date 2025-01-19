@@ -4,6 +4,7 @@ import axios from "axios";
 import '../styles/DeliveryPage.css'; // Import the updated CSS file
 import { Link } from "react-router-dom";
 import TestingFooter from "./testingFooter";
+import Navbar from "../components/Navbar/Navbar";
 
 const GOOGLE_MAPS_API_KEY = "AIzaSyAJ8MSlTWNHYOvTpuMB-v3NT8q7mr2jhyg"; // Replace with your own API key
 
@@ -132,12 +133,7 @@ const DeliveryPage = () => {
 
   return (
     <>
-      <nav className="navbar">
-        <ul>
-          <li><Link to="/dashboard">🏠 Dashboard</Link></li>
-          <li><Link to="/emergency-support">🚑 Emergency Support</Link></li>
-        </ul>
-      </nav>
+     <Navbar/>
       <div className="container">
         <h1>Traffic Relief Dashboard 🚗</h1>
 

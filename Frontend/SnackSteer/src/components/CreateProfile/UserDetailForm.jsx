@@ -2,6 +2,8 @@
 
 import React, { useState } from "react";
 import "./UserDetailForm.css";
+import Navbar from "../Navbar/Navbar";
+import TestingFooter from "../../pages/testingFooter";
 
 const UserDetailForm = () => {
   const [userDetails, setUserDetails] = useState({
@@ -53,6 +55,7 @@ const UserDetailForm = () => {
 
   return (
     <>
+    <Navbar/>
       <div className="user-detail-form-container">
         <h2>User Detail Form</h2>
         <form onSubmit={handleSubmit} className="user-detail-form">
@@ -123,6 +126,7 @@ const UserDetailForm = () => {
           <button type="submit">Submit</button>
         </form>
       </div>
+      <TestingFooter/>
     </>
   );
 };

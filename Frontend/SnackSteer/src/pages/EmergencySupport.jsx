@@ -1,16 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/EmergencySupport.css'; // Ensure to link the CSS
+import Navbar from '../components/Navbar/Navbar';
+import TestingFooter from './testingFooter';
 
 function EmergencySupport() {
   return (
+
+    <>
+    <Navbar/>
+    
     <div className="emergency-support-container">
-      <nav className="navbar">
-        <ul>
-          <li><Link to="/dashboard">Dashboard</Link></li>
-          <li><Link to="/emergency-support">Emergency Support</Link></li>
-        </ul>
-      </nav>
 
       <div className="emergency-support-content">
         <h2>🚑 Emergency Support</h2>
@@ -40,6 +40,8 @@ function EmergencySupport() {
         <Link to="/dashboard" className="back-to-dashboard">Back to Dashboard</Link>
       </div>
     </div>
+    <TestingFooter/>
+    </>
   );
 }
 

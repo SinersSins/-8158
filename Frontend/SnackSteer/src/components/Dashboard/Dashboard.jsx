@@ -4,7 +4,7 @@ import "./Dashboard.css"; // Ensure to link the CSS
 import Navbar from "../Navbar/Navbar.jsx";
 import Map from "../Map/Map.jsx";
 import TrafficReliefDashboard from "../TrafficReliefDashboard/TrafficReliefDashboard.jsx";
-import Footer from "../../pages/Footer.jsx";
+
 import TestingFooter from "../../pages/testingFooter.jsx";
 function Dashboard() {
   return (

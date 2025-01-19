@@ -14,7 +14,8 @@ import {
   Text,
 } from "recharts";
 import "./TrafficReliefDashboard.css"; // Optional, for custom styles
-import Footer from "../../pages/Footer";
+import TestingFooter from "../../pages/testingFooter";
+
 
 const TrafficReliefDashboard = () => {
   const [trafficData, setTrafficData] = useState([]);
@@ -91,7 +92,7 @@ const TrafficReliefDashboard = () => {
         </ResponsiveContainer>
       </div>
     </div>
-   
+   <TestingFooter/>
   </>
   );
 };

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/TransportPage.css'; // Ensure to link the CSS
 import { Link } from 'react-router';
+import Navbar from '../components/Navbar/Navbar';
 function TransportPage() {
   const [selectedOption, setSelectedOption] = useState("");
 
@@ -9,8 +10,9 @@ function TransportPage() {
   };
 
   return (
+    <>
+    <Navbar/>
     <div className="transport-page-container">
-    
       <header className="header">
         <h1>On-Demand Transport Assistance</h1>
         <p>Choose from quick transport alternatives and track your vehicle.</p>
@@ -30,7 +32,7 @@ function TransportPage() {
                 value="Bicycle"
                 checked={selectedOption === "Bicycle"}
                 onChange={handleOptionChange}
-              />
+                />
               <span className="checkmark"></span> Bicycle
             </label>
 
@@ -41,7 +43,7 @@ function TransportPage() {
                 value="Scooter"
                 checked={selectedOption === "Scooter"}
                 onChange={handleOptionChange}
-              />
+                />
               <span className="checkmark"></span> Scooter
             </label>
 
@@ -52,13 +54,13 @@ function TransportPage() {
                 value="Custom"
                 checked={selectedOption === "Custom"}
                 onChange={handleOptionChange}
-              />
+                />
               <span className="checkmark"></span> Custom
               {selectedOption === "Custom" && (
                 <input
-                  type="text"
-                  placeholder="Enter your transport option"
-                  className="custom-input"
+                type="text"
+                placeholder="Enter your transport option"
+                className="custom-input"
                 />
               )}
             </label>
@@ -77,6 +79,7 @@ function TransportPage() {
         <p>&copy; 2025 Snack & Steer Services. All rights reserved.</p>
       </footer>
     </div>
+              </>
   );
 }
 

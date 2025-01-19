@@ -15,7 +15,7 @@ const Navbar = () => {
           <Link to="/dashboard">
             <span role="img" aria-label="dashboard">📊</span> Dashboard
           </Link>
-          <Link to="/map">
+          <Link to="/foodpage">
             <span role="img" aria-label="food">🍔</span> Food
           </Link>
           <Link to="/emergency-support">
